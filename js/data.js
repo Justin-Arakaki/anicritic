@@ -1,4 +1,5 @@
 /* exported data */
+/* exported clearData */
 let data = {
   view: 'search',
   searchResults: [],
@@ -15,3 +16,15 @@ window.addEventListener('beforeunload', function () {
   const dataJSON = JSON.stringify(data);
   localStorage.setItem('data-local-storage', dataJSON);
 });
+function clearData() { // resets EVERYTHING (console use only)
+  data = {
+    view: 'search',
+    searchResults: [],
+    reviewList: [],
+    watchList: [],
+    queueList: [],
+    recommendResults: []
+  };
+  const dataJSON = JSON.stringify(data);
+  localStorage.setItem('data-local-storage', dataJSON);
+}
