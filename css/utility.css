@@ -1,0 +1,62 @@
+.heebo {
+  font-family: heebo, sans-serif;
+}
+
+.proza {
+  font-family: "proza libre", sans-serif;
+}
+
+.flex {
+  display: flex;
+}
+
+.just-space {
+  justify-content: space-between;
+}
+
+.just-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.color-lblue {
+  color: #24a5f9;
+}
+
+.padding {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.margin-top {
+  margin-top: 1rem;
+}
+
+.radius {
+  border-radius: 5px;
+}
+
+.col-sixth {
+  width: calc(100% / 6);
+}
+
+.col-60 {
+  width: 60%;
+}
+
+.col-80 {
+  width: 80%;
+}
+
+.col-full {
+  width: 100%;
+}
+
+.overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
