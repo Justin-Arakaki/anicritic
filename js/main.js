@@ -31,7 +31,7 @@ function handleClickEntryList(e) { // this is listening to all buttons
   const node = parseInt(elEntryItem.getAttribute('data-node'));
   const listType = viewToList(data.view);
   const entryData = data[listType][node];
-  for (const x of elAddButton.classList) {
+  for (const x of elButton.classList) {
     if (x === 'plus-button') {
       addEntry(data.lastView, entryData);
       switchView(data.lastView);
