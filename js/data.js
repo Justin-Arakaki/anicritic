@@ -1,7 +1,8 @@
-/* exported data */
-/* exported clearData */
+/* exported data, clearData */
+
 let data = {
-  view: 'search',
+  view: 'review-list',
+  lastView: null,
   searchResults: [],
   reviewList: [],
   watchList: [],
@@ -16,9 +17,11 @@ window.addEventListener('beforeunload', function () {
   const dataJSON = JSON.stringify(data);
   localStorage.setItem('data-local-storage', dataJSON);
 });
+
 function clearData() { // resets EVERYTHING (console use only)
   data = {
-    view: 'search',
+    view: 'review-list',
+    lastView: null,
     searchResults: [],
     reviewList: [],
     watchList: [],
@@ -27,4 +30,5 @@ function clearData() { // resets EVERYTHING (console use only)
   };
   const dataJSON = JSON.stringify(data);
   localStorage.setItem('data-local-storage', dataJSON);
+  location.reload();
 }
