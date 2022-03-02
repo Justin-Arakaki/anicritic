@@ -10,6 +10,14 @@
   display: flex;
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
 .just-space {
   justify-content: space-between;
 }
@@ -18,17 +26,33 @@
   justify-content: center;
 }
 
+.just-right {
+  justify-content: right;
+}
+
 .align-center {
   align-items: center;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.gap {
+  gap: 1rem;
 }
 
 .color-lblue {
   color: #24a5f9;
 }
 
+.color-dgray {
+  color: #1a1c1e;
+}
+
 .padding {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .margin-top {
@@ -59,4 +83,11 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media screen and (min-width: 500px) {
+  .padding {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
 }

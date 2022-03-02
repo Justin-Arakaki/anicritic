@@ -7,6 +7,9 @@
   <link rel="icon" href="images/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Proza+Libre:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" crossorigin="anonymous"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
@@ -15,28 +18,38 @@
 <body>
   <header>
     <div class="container padding">
-      <div class="detail-header" data-view-type="detail">
-        <h2 class="color-lblue">Search</h2>
+      <div class="detail-header hidden"
+        data-view="review edit-review edit-series recommend search">
+        <h2 class="color-lblue"></h2>
       </div>
-      <div class="nav-header hidden" data-view-type="nav">
-        <h2>Reviews</h2>
-        <h2>Watching</h2>
-        <h2>Queue</h2>
-        <h2>Recommend</h2>
+      <div class="nav-header hidden"
+        data-view="review-list watch-list queue-list recommend sommelier">
+        <a data-nav="review-list" href="#">Reviews</a>
+        <a data-nav="watch-list" href="#">Watching</a>
+        <a data-nav="queue-list" href="#">Queue</a>
+        <a data-nav="recommend" href="#">Recommend</a>
       </div>
     </div>
   </header>
   <main>
-    <div class="container">
+    <div class="container" data-view="search">
       <div class="flex just-center margin-top">
         <input class="col-80" type="text" name="search" id="search" placeholder="Search">
       </div>
       <h2 class="search-notification hidden">Searching...</h2>
+    </div>
+    <div class="container" data-view="search review-list watch-list queue-list sommelier">
       <ul class="margin-top"></ul>
+      <div class="flex just-center margin-top" data-view="review-list watch-list queue-list">
+        <button class="add-button color-dgray radius">ADD</button>
+      </div>
+    </div>
     </div>
   </main>
   <script src="js/data.js"></script>
-  <script src="js/search-feature.js"></script>
+  <script src="js/elements.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/search.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
