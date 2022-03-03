@@ -11,7 +11,7 @@ header {
 
 .container {
   margin: 0 auto;
-  min-width: 300px;
+  min-width: 375px;
 }
 
 @media screen and (min-width: 500px) {

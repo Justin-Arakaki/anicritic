@@ -10,13 +10,18 @@
 
 .entry-item {
   display: flex;
+  gap: 0.5rem;
   height: 25vw;
   max-height: 200px;
-  min-height: 75px;
+  min-height: 94px;
   margin-top: 0.25rem;
   padding: 5px;
-  gap: 5px;
   background-color: #1a1c1e;
+}
+
+.entry-info {
+  width: 0; /* DO NOT REMOVE */
+  flex-grow: 1;
 }
 
 .episode-track {
@@ -52,11 +57,51 @@
   font-weight: bold;
 }
 
-.increment-button {
+.modal-button-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.modal-button {
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  flex-grow: 1;
+}
+
+.list-arrow-button {
   display: flex;
   padding: 0 1.2rem;
   justify-content: center;
   align-items: center;
+}
+
+.modal-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.modal-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modal-detail {
+  background-color: #1a1c1e;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.modal-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
 }
 
 @media screen and (min-width: 500px) {
@@ -64,5 +109,24 @@
     margin-top: 0.5rem;
     padding: 0.5rem;
     gap: 1rem;
+  }
+
+  .modal-left {
+    width: 40%;
+    margin: 0;
+  }
+
+  .modal-right {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+
+  .modal-button {
+    width: 100%;
+    padding: 0.25rem 0;
+  }
+
+  .modal-preview {
+    width: 100%;
   }
 }

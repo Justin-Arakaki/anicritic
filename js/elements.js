@@ -21,7 +21,7 @@ function elementImage(dataObject) {
 
 function elementInfo() {
   const elInfoWrapper = document.createElement('div');
-  elInfoWrapper.className = 'col-60';
+  elInfoWrapper.className = 'entry-info';
   return elInfoWrapper;
 }
 
@@ -35,11 +35,11 @@ function elementTitle(dataObject) {
 
 function elementAddButton() {
   const elButtonWrapper = document.createElement('div');
-  elButtonWrapper.className = 'flex flex-grow-1 just-right align-center';
+  elButtonWrapper.className = 'flex just-right align-center';
   const elButton = document.createElement('button');
   elButton.className = 'plus-button radius';
   const elIcon = document.createElement('i');
-  elIcon.className = 'fas fa-plus fa-2x color-dgray';
+  elIcon.className = 'fas fa-th-list fa-2x';
   elButtonWrapper.appendChild(elButton);
   elButton.appendChild(elIcon);
   return elButtonWrapper;
@@ -63,37 +63,47 @@ function elementVibes(dataObject) {
   return elVibeBox;
 }
 
-function elementEpisodeButtons(dataObject) {
+function elementEpisodeButtons(dataObject, buttonTypeNum) {
   const elContainer = document.createElement('div');
-  elContainer.className = 'flex flex-grow-1 just-right align-center';
+  elContainer.className = 'flex just-right align-center';
   const elWrapper = document.createElement('div');
   elWrapper.className = 'episode-track';
-  const elEpisodeCount = document.createElement('h3');
-  elEpisodeCount.className = 'episode-counter';
-  // If movie prevent adding buttons
-  elContainer.appendChild(elWrapper);
-  if (dataObject.episodes === null || dataObject.episodes === 1) {
-    elWrapper.classList.add('just-center');
-    elEpisodeCount.textContent = 'Movie';
-    elWrapper.appendChild(elEpisodeCount);
-    return elContainer; // Returns before adding buttons
-  }
-  if (dataObject.current_episode === undefined) {
-    dataObject.current_episode = 1;
-  }
-  elEpisodeCount.textContent = dataObject.current_episode + ' / ' +
-    dataObject.episodes;
-  // Add buttons
+  const elButtonText = document.createElement('h3');
+  elButtonText.className = 'episode-counter';
   const elUpButton = document.createElement('button');
-  elUpButton.className = 'increment-button up-btn radius';
+  elUpButton.className = 'list-arrow-button radius';
   const elDownButton = document.createElement('button');
-  elDownButton.className = 'increment-button down-btn radius';
+  elDownButton.className = 'list-arrow-button radius';
   const elUpIcon = document.createElement('i');
   elUpIcon.className = 'fas fa-chevron-up fa-2x color-dgray';
   const elDownIcon = document.createElement('i');
   elDownIcon.className = 'fas fa-chevron-down fa-2x color-dgray';
+  // If movie prevent adding buttons
+  elContainer.appendChild(elWrapper);
+  if (buttonTypeNum === 0) { // Episode Tracker Type
+    // Movies Case
+    if (dataObject.episodes === null || dataObject.episodes === 1) {
+      elWrapper.classList.add('just-center');
+      elButtonText.textContent = 'Movie';
+      elWrapper.appendChild(elButtonText);
+      return elContainer; // Returns before adding buttons
+    }
+    // Initialize current_episode property
+    if (dataObject.current_episode === undefined) {
+      dataObject.current_episode = 1;
+    }
+    elUpButton.classList.add('ep-up-btn');
+    elDownButton.classList.add('ep-down-btn');
+    elButtonText.textContent = dataObject.current_episode + ' / ' +
+      dataObject.episodes;
+  } else if (buttonTypeNum === 1) { // Series Mover Type
+    elUpButton.classList.add('move-up-btn');
+    elDownButton.classList.add('move-down-btn');
+    elButtonText.textContent = 'MOVE';
+  }
+  // Add buttons
   elWrapper.appendChild(elUpButton);
-  elWrapper.appendChild(elEpisodeCount);
+  elWrapper.appendChild(elButtonText);
   elWrapper.appendChild(elDownButton);
   elUpButton.appendChild(elUpIcon);
   elDownButton.appendChild(elDownIcon);
