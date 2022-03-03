@@ -52,6 +52,20 @@
   font-weight: bold;
 }
 
+.modal-button-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.modal-button {
+  padding: 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  flex-grow: 1;
+}
+
 .increment-button {
   display: flex;
   padding: 0 1.2rem;
@@ -59,10 +73,54 @@
   align-items: center;
 }
 
+.modal-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  gap: 0.5rem;
+}
+
+.modal-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modal-detail {
+  background-color: #1a1c1e;
+  padding: 0.5rem;
+}
+
+.modal-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
 @media screen and (min-width: 500px) {
   .entry-item {
     margin-top: 0.5rem;
     padding: 0.5rem;
     gap: 1rem;
+  }
+
+  .modal-left {
+    width: 40%;
+    margin: 0;
+  }
+
+  .modal-right {
+    flex-grow: 1;
+    width: 1px;
+  }
+
+  .modal-button {
+    width: 100%;
+  }
+
+  .modal-preview {
+    width: 100%;
   }
 }

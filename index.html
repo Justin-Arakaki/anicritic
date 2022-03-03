@@ -20,7 +20,7 @@
     <div class="container padding">
       <div class="detail-header hidden"
         data-view="review edit-review edit-series recommend search">
-        <h2 class="color-lblue"></h2>
+        <h1 class="color-lblue"></h1>
       </div>
       <div class="nav-header hidden"
         data-view="review-list watch-list queue-list recommend sommelier">
@@ -32,18 +32,46 @@
     </div>
   </header>
   <main>
-    <div class="container" data-view="search">
+    <div class="container hidden" data-view="search">
       <div class="flex just-center margin-top">
         <input class="col-80" type="text" name="search" id="search" placeholder="Search">
       </div>
       <h2 class="search-notification hidden">Searching...</h2>
     </div>
-    <div class="container" data-view="search review-list watch-list queue-list sommelier">
+    <div class="container hidden" data-view="search review-list watch-list queue-list sommelier">
       <ul class="margin-top"></ul>
       <div class="flex just-center margin-top" data-view="review-list watch-list queue-list">
         <button class="add-button color-dgray radius">ADD</button>
       </div>
     </div>
+    <div class="container padding hidden" data-view="review edit-review edit-series">
+      <h2 class="margin-top text-align-center color-lblue" data-modal-detail="title">Title</h2>
+      <div class="flex flex-wrap gap margin-top">
+        <div class="modal-left">
+          <div class="modal-preview">
+            <img class="radius" src="images/placeholder-image.png" alt="Image not found">
+          </div>
+          <div class="modal-button-wrapper">
+            <button class="modal-button color-dgray radius" data-button="add">ADD</button>
+            <button class="modal-button color-dgray radius" data-button="back">BACK</button>
+          </div>
+        </div>
+        <div class="modal-right">
+          <div class="modal-detail radius">
+            <div class="flex just-space">
+              <h2 class="color-lblue heebo">MAL Score</h2>
+              <h2 data-modal-detail="score" class="heebo">10.0</h2>
+            </div>
+          </div>
+          <div class="modal-detail radius">
+            <h2 class="color-lblue heebo">Synopsis</h2>
+            <p data-modal-detail="synopsis">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos esse quasi illo, id beatae, omnis magni nihil non
+              officiis rerum totam enim debitis ex laudantium hic mollitia, obcaecati corporis doloribus.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>

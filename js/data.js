@@ -2,7 +2,8 @@
 
 let data = {
   view: 'review-list',
-  lastView: null,
+  loadedEntry: null,
+  editing: null,
   searchResults: [],
   reviewList: [],
   watchList: [],
@@ -21,7 +22,8 @@ window.addEventListener('beforeunload', function () {
 function clearData() { // resets EVERYTHING (console use only)
   data = {
     view: 'review-list',
-    lastView: null,
+    loadedEntry: null,
+    editing: null,
     searchResults: [],
     reviewList: [],
     watchList: [],
