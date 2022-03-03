@@ -1,5 +1,5 @@
 /* exported populateEntryList */
-/* global elementEntryItem, elementImage, elementInfo, elementTitle, elementVibes, elementAddButton, elementEpisodeButtons */
+/* global elementEntryItem, elementImage, elementInfo, elementTitle, elementAddButton, elementEpisodeButtons */
 /* global data, elEntryList, clearEntryList */
 
 function populateEntryList(viewString) {
@@ -21,7 +21,7 @@ function populateEntryList(viewString) {
       break;
     case 'queue-list':
       entries = data.queueList;
-      // renderer
+      renderer = renderQueueList;
       break;
     case 'sommelier':
       entries = data.recommendResults;
@@ -39,23 +39,33 @@ function populateEntryList(viewString) {
 }
 
 function renderWatchList(dataObject) { // REMOVE TESTER!!!
-  const THING = { vibes: ['Chill', 'Fun', 'Tacos'] }; // REMOVE!!!
-  const elWatchItem = elementEntryItem();
+  // const THING = { vibes: ['Chill', 'Fun', 'Tacos'] }; // REMOVE!!!
+  const elEntryItem = elementEntryItem();
   const elInfo = elementInfo();
   elInfo.appendChild(elementTitle(dataObject));
-  elInfo.appendChild(elementVibes(THING));
-  elWatchItem.appendChild(elementImage(dataObject));
-  elWatchItem.appendChild(elInfo);
-  elWatchItem.appendChild(elementEpisodeButtons(dataObject));
-  return elWatchItem;
+  // elInfo.appendChild(elementVibes(THING)); // Remove for now
+  elEntryItem.appendChild(elementImage(dataObject));
+  elEntryItem.appendChild(elInfo);
+  elEntryItem.appendChild(elementEpisodeButtons(dataObject, 0));
+  return elEntryItem;
 }
 
 function renderSearch(dataObject) {
-  const elSearchEntry = elementEntryItem();
+  const elEntryItem = elementEntryItem();
   const elInfo = elementInfo();
   elInfo.appendChild(elementTitle(dataObject));
-  elSearchEntry.appendChild(elementImage(dataObject));
-  elSearchEntry.appendChild(elInfo);
-  elSearchEntry.appendChild(elementAddButton());
-  return elSearchEntry;
+  elEntryItem.appendChild(elementImage(dataObject));
+  elEntryItem.appendChild(elInfo);
+  elEntryItem.appendChild(elementAddButton());
+  return elEntryItem;
+}
+
+function renderQueueList(dataObject) {
+  const elEntryItem = elementEntryItem();
+  const elInfo = elementInfo();
+  elInfo.appendChild(elementTitle(dataObject));
+  elEntryItem.appendChild(elementImage(dataObject));
+  elEntryItem.appendChild(elInfo);
+  elEntryItem.appendChild(elementEpisodeButtons(dataObject, 1));
+  return elEntryItem;
 }
