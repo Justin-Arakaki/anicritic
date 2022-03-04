@@ -26,17 +26,17 @@ function handleClickNav(e) {
 }
 
 function handleClickEntryList(e) { // this is listening to all buttons
-  const tag = e.target.tagName;
-  if (tag !== 'I' && tag !== 'BUTTON') {
-    return;
-  }
   const elEntryItem = e.target.closest('.entry-item');
   const elButton = e.target.closest('button');
   const node = parseInt(elEntryItem.getAttribute('data-node'));
   const listType = viewToList(data.view);
   const entryData = data[listType][node];
-  for (const x of elButton.classList) {
-    if (x === 'plus-button') { // TODO may want to use data-button
+  if (elButton !== null) {
+    handleClickEntryButton(elButton, entryData);
+    return;
+  }
+  switch (data.view) {
+    case 'search':
       if (data.editing === 'review-list') {
         populateDetail(entryData);
         switchView('edit-review');
@@ -45,27 +45,51 @@ function handleClickEntryList(e) { // this is listening to all buttons
         switchView('edit-series');
       }
       break;
-    } else if (x === 'ep-up-btn') {
-      if (entryData.current_episode === entryData.episodes) {
-        break;
-      }
-      entryData.current_episode++;
-      break;
-    } else if (x === 'ep-down-btn') {
-      if (entryData.current_episode === 1) {
-        break;
-      }
-      entryData.current_episode--;
-      break;
-    } else if (x === 'move-up-btn') {
-      moveEntry(elEntryItem, 'up');
-    } else if (x === 'move-down-btn') {
-      moveEntry(elEntryItem, 'down');
-    } else if (x === 'entry-edit-button') {
+    case 'watch-list':
+      data.inList = true;
+      data.editing = data.view;
       populateDetail(entryData);
-    }
+      switchView('view-series');
+      break;
+    case 'queue-list':
+      data.inList = true;
+      data.editing = data.view;
+      populateDetail(entryData);
+      switchView('view-series');
+      break;
+    case 'review-list':
+      data.inList = true;
+      data.editing = data.view;
+      populateDetail(entryData);
+      switchView('review');
+      break;
   }
   populateEntryList(data.view); // TODO this is inefficient
+}
+
+function handleClickEntryButton(buttonElement, dataObject) {
+  const elEntry = buttonElement.closest('.entry-item');
+  for (const x of buttonElement.classList) {
+    if (x === 'ep-up-btn') {
+      if (dataObject.current_episode === dataObject.episodes) {
+        break;
+      }
+      dataObject.current_episode++;
+      break;
+    } else if (x === 'ep-down-btn') {
+      if (dataObject.current_episode === 1) {
+        break;
+      }
+      dataObject.current_episode--;
+      break;
+    } else if (x === 'move-up-btn') {
+      moveEntry(elEntry, 'up');
+    } else if (x === 'move-down-btn') {
+      moveEntry(elEntry, 'down');
+    } else if (x === 'entry-edit-button') {
+      populateDetail(dataObject);
+    }
+  }
 }
 
 function handleClickAddButton() {
@@ -78,7 +102,15 @@ function handleClickAddModalButton(e) {
   const editedList = viewToList(data.editing);
   switch (buttonType) {
     case 'back':
-      switchView('search');
+      if (data.inList === true) {
+        data.inList = false;
+        switchView(data.editing);
+      } else {
+        switchView('search');
+      }
+      if (data.editing === 'review-list') {
+        data.editing = null;
+      }
       data.loadedEntry = null;
       break;
     case 'add':
@@ -86,6 +118,13 @@ function handleClickAddModalButton(e) {
       switchView(data.editing);
       data.editing = null;
       data.loadedEntry = null;
+      break;
+    case 'details':
+      switchView('view-series');
+      break;
+    case 'edit-review':
+      switchView('edit-review');
+      fillReviewForm();
       break;
   }
 }
@@ -134,11 +173,14 @@ function switchView(viewString) { // Changes UI to view
     case 'edit-review':
       elDetailHeader.textContent = 'Edit Review';
       break;
-    case 'review-view':
+    case 'review':
       elDetailHeader.textContent = 'Review';
       break;
     case 'edit-series':
       elDetailHeader.textContent = 'Add Series';
+      break;
+    case 'view-series':
+      elDetailHeader.textContent = 'Series Details';
       break;
     case 'search':
       elDetailHeader.textContent = 'Search';
@@ -174,7 +216,8 @@ function switchAllDataView(viewString) { // Hides or shows all data-view
   const elView = document.querySelectorAll('[data-view]');
   for (let i = 0; i < elView.length; i++) { // Show/hide elements with data-view
     const dataView = elView[i].getAttribute('data-view');
-    if (dataView.includes(viewString)) {
+    const dataViewList = dataView.split(' ');
+    if (dataViewList.includes(viewString)) {
       elView[i].classList.remove('hidden');
     } else {
       elView[i].classList.add('hidden');
@@ -219,6 +262,26 @@ function populateDetail(dataObject) {
   const elScore = document.querySelector('[data-modal-detail="score"]');
   const elSynopsis = document.querySelector('[data-modal-detail="synopsis"]');
   const elEpisodes = document.querySelector('[data-modal-detail="episodes"]');
+  const elStudio = document.querySelector('[data-modal-detail="studio"]');
+  const elGenres = document.querySelector('[data-modal-detail="genres"]');
+  const elDemographic = document.querySelector('[data-modal-detail="demographic"]');
+  const elTrailer = document.querySelector('[data-modal-detail="trailer"]');
+  const elMAL = document.querySelector('[data-modal-detail="MAL"]');
+  const elMyRating = document.querySelector('[data-modal-detail="my-rating"]');
+  const elThoughts = document.querySelector('[data-modal-detail="my-thoughts"]');
+  const elReview = document.querySelector('[data-modal-detail="my-review"]');
+  elReview.textContent = data.loadedEntry.review;
+  elThoughts.textContent = data.loadedEntry.thoughts;
+  elMyRating.textContent = data.loadedEntry.personal_score;
+  elMAL.setAttribute('href', data.loadedEntry.url);
+  elTrailer.setAttribute('href', data.loadedEntry.trailer.url);
+  elDemographic.textContent = data.loadedEntry.demographics[0].name;
+  let genreList = '';
+  for (let i = 0; i < Math.min(data.loadedEntry.genres.length, 2); i++) {
+    genreList += data.loadedEntry.genres[i].name + ' ';
+  }
+  elGenres.textContent = genreList;
+  elStudio.textContent = data.loadedEntry.studios[0].name;
   elTitle.textContent = data.loadedEntry.title;
   elPreviewPic.setAttribute('src', data.loadedEntry.images.jpg.image_url);
   elScore.textContent = data.loadedEntry.score;
@@ -249,6 +312,15 @@ function moveEntry(entryItemElement, directionString) {
   } else {
     data[listType].splice(node, 2, siblingEntryData, entryData);
   }
+}
+
+function fillReviewForm() {
+  const elThoughtsInput = document.querySelector('#thoughts');
+  const elScoreInput = document.querySelector('#score');
+  const elReviewInput = document.querySelector('#review');
+  elThoughtsInput.value = data.loadedEntry.thoughts;
+  elScoreInput.value = data.loadedEntry.personal_score;
+  elReviewInput.value = data.loadedEntry.review;
 }
 
 // TODO this is far more efficient than repopulating whole list

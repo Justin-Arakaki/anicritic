@@ -19,7 +19,7 @@
   <header>
     <div class="container padding">
       <div class="detail-header hidden"
-        data-view="review edit-review edit-series search">
+        data-view="review edit-review edit-series view-series search">
         <h1 class="color-lblue"></h1>
       </div>
       <div class="nav-header hidden"
@@ -44,7 +44,7 @@
       </div>
       <ul class="margin-top"></ul>
     </div>
-    <div class="container padding hidden" data-view="review edit-review edit-series">
+    <div class="container padding hidden" data-view="review edit-review edit-series view-series">
       <h2 class="margin-top text-align-center color-lblue" data-modal-detail="title">Title</h2>
       <form id="review-form" class="flex flex-wrap gap margin-top">
         <div class="modal-left">
@@ -52,37 +52,82 @@
             <img class="radius" src="images/placeholder-image.png" alt="Image not found">
           </div>
           <div class="modal-button-wrapper">
+            <button class="modal-button radius" type="button" data-view="review"
+              data-button="edit-review">EDIT</button>
+            <button class="modal-button radius" type="button" data-view="review"
+              data-button="details">DETAILS</button>
             <button class="modal-button radius" type="button" data-view="edit-series"
               data-button="add">ADD</button>
             <button class="modal-button radius" data-view="edit-review"
-              data-button="submit">ADD</button>
+              data-button="submit">SAVE</button>
             <button class="modal-button radius" type="button" data-button="back">BACK</button>
           </div>
           <div class="modal-detail radius">
             <div class="flex just-space">
               <h2 class="color-lblue heebo">MAL Score</h2>
-              <h2 data-modal-detail="score" class="heebo">10.0</h2>
+              <h2 data-modal-detail="score" class="heebo"></h2>
             </div>
           </div>
-          <div class="modal-detail radius">
+          <div class="modal-detail radius" data-view="edit-series view-series">
             <div class="flex just-space">
               <h2 class="color-lblue heebo">Episodes</h2>
-              <h2 data-modal-detail="episodes" class="heebo">100</h2>
+              <h2 data-modal-detail="episodes" class="heebo"></h2>
             </div>
           </div>
         </div>
         <div class="modal-right">
+          <div class="modal-detail radius" data-view="review">
+            <div class="flex just-space">
+              <h2 class="color-lblue heebo">My Rating</h2>
+              <h2 data-modal-detail="my-rating" class="heebo"></h2>
+            </div>
+          </div>
+          <div class="modal-detail radius" data-view="review">
+            <h2 class="color-lblue heebo">Thoughts</h2>
+            <p data-modal-detail="my-thoughts"></p>
+          </div>
+          <div class="modal-detail radius" data-view="edit-series view-series">
+            <div class="flex just-space">
+              <h2 class="color-lblue heebo">Studio</h2>
+              <h2 data-modal-detail="studio" class="heebo"></h2>
+            </div>
+          </div>
+          <div class="modal-detail radius" data-view="edit-series view-series">
+            <div class="flex just-space">
+              <h2 class="color-lblue heebo">Demographic</h2>
+              <h2 data-modal-detail="demographic" class="heebo"></h2>
+            </div>
+          </div>
+          <div class="modal-detail radius" data-view="edit-series view-series">
+            <div class="flex just-space">
+              <h2 class="color-lblue heebo">Genre</h2>
+              <h2 data-modal-detail="genres" class="heebo"></h2>
+            </div>
+          </div>
+          <div class="modal-detail radius" data-view="edit-series view-series">
+            <div class="flex just-space">
+              <h2 class="color-lblue heebo">Trailer</h2>
+              <a data-modal-detail="trailer" class="heebo" target="_blank" href="">Youtube Link</a>
+            </div>
+          </div>
+          <div class="modal-detail radius" data-view="edit-series view-series">
+            <div class="flex just-space">
+              <h2 class="color-lblue heebo">MAL</h2>
+              <a data-modal-detail="MAL" class="heebo" target="_blank" href="">MAL Link</a>
+            </div>
+          </div>
           <input data-view="edit-review" name="thoughts" type="text" id="thoughts"
             maxlength="50" placeholder="Thoughts">
           <input data-view="edit-review" name="score" type="text" id="score"
             maxlength="4" placeholder="Score">
         </div>
-        <div class="modal-detail radius" data-view="review edit-series">
+        <div class="modal-detail radius" data-view="review">
+          <h2 class="color-lblue heebo">Review</h2>
+          <p data-modal-detail="my-review"></p>
+        </div>
+        <div class="modal-detail radius" data-view="edit-series view-series">
           <h2 class="color-lblue heebo">Synopsis</h2>
-          <p data-modal-detail="synopsis">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos esse quasi illo, id beatae, omnis magni nihil non
-            officiis rerum totam enim debitis ex laudantium hic mollitia, obcaecati corporis doloribus.
-          </p>
+          <p data-modal-detail="synopsis"></p>
         </div>
         <textarea data-view="edit-review" name="review" id="review"
           cols="30" rows="10" placeholder="Review"></textarea>

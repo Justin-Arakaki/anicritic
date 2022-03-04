@@ -9,6 +9,7 @@
 
 body {
   background-color: #232628;
+  overflow: hidden;
 }
 
 h1,
@@ -67,4 +68,23 @@ textarea:focus {
 
 ::placeholder {
   color: #708e97;
+}
+
+@media screen and (min-width: 500px) {
+  ::-webkit-scrollbar {
+    width: 16px;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #555;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #888;
+  }
 }
