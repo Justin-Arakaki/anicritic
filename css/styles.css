@@ -75,6 +75,7 @@
   width: 2.5rem;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .add-button {
@@ -155,7 +156,7 @@
 
   .entry-edit-button {
     width: 100%;
-    padding: 0.25rem 1rem;
+    padding: 0.25rem   1rem;
   }
 
   .modal-left {
