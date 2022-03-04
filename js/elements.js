@@ -39,7 +39,7 @@ function elementAddButton() {
   const elButton = document.createElement('button');
   elButton.className = 'plus-button radius';
   const elIcon = document.createElement('i');
-  elIcon.className = 'fas fa-th-list fa-2x';
+  elIcon.className = 'fas fa-list fa-2x';
   elButtonWrapper.appendChild(elButton);
   elButton.appendChild(elIcon);
   return elButtonWrapper;
