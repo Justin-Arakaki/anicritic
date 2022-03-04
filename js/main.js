@@ -10,6 +10,8 @@ const elAddButton = document.querySelector('.add-button');
 elAddButton.addEventListener('click', handleClickAddButton);
 const elModalButtons = document.querySelector('.modal-button-wrapper');
 elModalButtons.addEventListener('click', handleClickAddModalButton);
+const elReviewForm = document.querySelector('#review-form');
+elReviewForm.addEventListener('submit', handleReviewSubmit);
 
 function handleLoad() { // Runs when content loaded
   populateEntryList(data.view);
@@ -35,7 +37,13 @@ function handleClickEntryList(e) { // this is listening to all buttons
   const entryData = data[listType][node];
   for (const x of elButton.classList) {
     if (x === 'plus-button') { // TODO may want to use data-button
-      openSearchDetail(entryData);
+      if (data.editing === 'review-list') {
+        populateDetail(entryData);
+        switchView('edit-review');
+      } else {
+        populateDetail(entryData);
+        switchView('edit-series');
+      }
       break;
     } else if (x === 'ep-up-btn') {
       if (entryData.current_episode === entryData.episodes) {
@@ -53,6 +61,8 @@ function handleClickEntryList(e) { // this is listening to all buttons
       moveEntry(elEntryItem, 'up');
     } else if (x === 'move-down-btn') {
       moveEntry(elEntryItem, 'down');
+    } else if (x === 'entry-edit-button') {
+      populateDetail(entryData);
     }
   }
   populateEntryList(data.view); // TODO this is inefficient
@@ -69,13 +79,51 @@ function handleClickAddModalButton(e) {
   switch (buttonType) {
     case 'back':
       switchView('search');
+      data.loadedEntry = null;
       break;
     case 'add':
       addEntry(editedList, data.loadedEntry);
       switchView(data.editing);
       data.editing = null;
+      data.loadedEntry = null;
       break;
   }
+}
+
+function handleReviewSubmit(e) {
+  e.preventDefault();
+  const inputs = e.target.elements;
+  const editedList = viewToList(data.editing);
+  if (inputs.thoughts.value === '') {
+    data.loadedEntry.thoughts = 'No thoughts yet!';
+  } else {
+    data.loadedEntry.thoughts = inputs.thoughts.value;
+  }
+  if (inputs.score.value === '') {
+    data.loadedEntry.personal_score = '-';
+  } else {
+    data.loadedEntry.personal_score = inputs.score.value;
+  }
+  if (inputs.review.value === '') {
+    data.loadedEntry.review = 'No reviews yet!';
+  } else {
+    data.loadedEntry.review = inputs.review.value;
+  }
+  addEntry(editedList, data.loadedEntry);
+  switchView(data.editing);
+  clearInputs();
+  e.target.reset();
+  data.editing = null;
+  data.loadedEntry = null;
+}
+
+function clearInputs() {
+  const elThoughts = document.querySelector('#thoughts');
+  const elScore = document.querySelector('#score');
+  const elReview = document.querySelector('#review');
+  elThoughts.setAttribute('value', '');
+  elScore.setAttribute('value', '');
+  elReview.textContent = '';
 }
 
 function switchView(viewString) { // Changes UI to view
@@ -83,7 +131,7 @@ function switchView(viewString) { // Changes UI to view
   populateEntryList(viewString);
   switchAllDataView(viewString);
   switch (viewString) { // Change headings based on view
-    case 'review-edit':
+    case 'edit-review':
       elDetailHeader.textContent = 'Edit Review';
       break;
     case 'review-view':
@@ -164,7 +212,7 @@ function viewToList(viewString) {
   return null;
 }
 
-function openSearchDetail(dataObject) {
+function populateDetail(dataObject) {
   data.loadedEntry = dataObject;
   const elTitle = document.querySelector('[data-modal-detail="title"]');
   const elPreviewPic = document.querySelector('.modal-preview > img');
@@ -180,7 +228,6 @@ function openSearchDetail(dataObject) {
     elEpisodes.textContent = data.loadedEntry.episodes;
   }
   elSynopsis.textContent = data.loadedEntry.synopsis;
-  switchView('edit-series');
 }
 
 function moveEntry(entryItemElement, directionString) {

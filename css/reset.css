@@ -45,13 +45,19 @@ button:hover {
   cursor: pointer;
 }
 
-input {
+input,
+textarea {
+  display: block;
+  width: 100%;
   padding: 0.75rem;
-  color: #708e97;
   background-color: #1a1c1e;
   font-size: 1rem;
   border-radius: 5px;
   border-style: none;
+}
+
+textarea {
+  resize: none;
 }
 
 input:focus,
