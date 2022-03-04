@@ -1,4 +1,4 @@
-/* exported elementEntryItem, elementImage, elementInfo, elementTitle, elementVibes, elementAddButton, elementEpisodeButtons */
+/* exported elementEntryItem, elementImage, elementInfo, elementTitle, elementVibes, elementAddButton, elementEpisodeButtons, elementThoughts, elementReview, elementScoreCard, elementEditButton, elementRightSide, elementDetailButton */
 
 function elementEntryItem() {
   const elEntry = document.createElement('li');
@@ -108,4 +108,68 @@ function elementEpisodeButtons(dataObject, buttonTypeNum) {
   elUpButton.appendChild(elUpIcon);
   elDownButton.appendChild(elDownIcon);
   return elContainer;
+}
+
+function elementThoughts(dataObject) {
+  let thoughts;
+  const elThoughts = document.createElement('h3');
+  if (dataObject.thoughts === undefined) {
+    thoughts = 'No thoughts yet!';
+  } else {
+    thoughts = dataObject.thoughts;
+  }
+  elThoughts.classList.add('overflow');
+  elThoughts.textContent = thoughts;
+  return elThoughts;
+}
+
+function elementReview(dataObject) {
+  let review;
+  const elReview = document.createElement('p');
+  if (dataObject.review === undefined) {
+    review = 'No review yet!';
+  } else {
+    review = dataObject.review;
+  }
+  elReview.textContent = 'Review: ' + review;
+  elReview.classList.add('overflow');
+  return elReview;
+}
+
+function elementScoreCard(dataObject) {
+  const elContainer = document.createElement('div');
+  elContainer.classList.add('entry-score-card', 'radius');
+  const elHeading = document.createElement('h2');
+  elHeading.classList.add('color-lblue', 'entry-score-head', 'proza');
+  elHeading.textContent = 'SCORE';
+  const elScore = document.createElement('h3');
+  elScore.classList.add('color-lblue', 'entry-score', 'proza');
+  elScore.textContent = dataObject.personal_score;
+  elContainer.appendChild(elHeading);
+  elContainer.appendChild(elScore);
+  return elContainer;
+}
+
+function elementEditButton() {
+  const elButton = document.createElement('button');
+  elButton.classList.add('entry-edit-button', 'radius');
+  const elIcon = document.createElement('i');
+  elIcon.className = 'far fa-edit fa-2x';
+  elButton.appendChild(elIcon);
+  return elButton;
+}
+
+function elementDetailButton() {
+  const elButton = document.createElement('button');
+  elButton.classList.add('entry-detail-button', 'radius');
+  const elIcon = document.createElement('i');
+  elIcon.className = 'far fa-newspaper fa-2x';
+  elButton.appendChild(elIcon);
+  return elButton;
+}
+
+function elementRightSide() {
+  const elDiv = document.createElement('div');
+  elDiv.classList.add('flex', 'flex-col', 'just-space', 'align-center');
+  return elDiv;
 }

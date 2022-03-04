@@ -1,5 +1,5 @@
 /* exported populateEntryList */
-/* global elementEntryItem, elementImage, elementInfo, elementTitle, elementAddButton, elementEpisodeButtons */
+/* global elementEntryItem, elementImage, elementInfo, elementTitle, elementAddButton, elementEpisodeButtons, elementThoughts, elementReview, elementScoreCard, elementRightSide, elementDetailButton */
 /* global data, elEntryList, clearEntryList */
 
 function populateEntryList(viewString) {
@@ -13,7 +13,7 @@ function populateEntryList(viewString) {
       break;
     case 'review-list':
       entries = data.reviewList;
-      // renderer
+      renderer = renderReviewList;
       break;
     case 'watch-list':
       entries = data.watchList;
@@ -67,5 +67,20 @@ function renderQueueList(dataObject) {
   elEntryItem.appendChild(elementImage(dataObject));
   elEntryItem.appendChild(elInfo);
   elEntryItem.appendChild(elementEpisodeButtons(dataObject, 1));
+  return elEntryItem;
+}
+
+function renderReviewList(dataObject) {
+  const elEntryItem = elementEntryItem();
+  const elInfo = elementInfo();
+  const elRightSide = elementRightSide();
+  elInfo.appendChild(elementTitle(dataObject));
+  elInfo.appendChild(elementThoughts(dataObject));
+  elInfo.appendChild(elementReview(dataObject));
+  elRightSide.appendChild(elementScoreCard(dataObject));
+  elRightSide.appendChild(elementDetailButton());
+  elEntryItem.appendChild(elementImage(dataObject));
+  elEntryItem.appendChild(elInfo);
+  elEntryItem.appendChild(elRightSide);
   return elEntryItem;
 }

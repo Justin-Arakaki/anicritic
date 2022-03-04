@@ -46,14 +46,17 @@
     </div>
     <div class="container padding hidden" data-view="review edit-review edit-series">
       <h2 class="margin-top text-align-center color-lblue" data-modal-detail="title">Title</h2>
-      <div class="flex flex-wrap gap margin-top">
+      <form id="review-form" class="flex flex-wrap gap margin-top">
         <div class="modal-left">
           <div class="modal-preview margin-bottom">
             <img class="radius" src="images/placeholder-image.png" alt="Image not found">
           </div>
           <div class="modal-button-wrapper">
-            <button class="modal-button radius" data-button="add">ADD</button>
-            <button class="modal-button radius" data-button="back">BACK</button>
+            <button class="modal-button radius" type="button" data-view="edit-series"
+              data-button="add">ADD</button>
+            <button class="modal-button radius" data-view="edit-review"
+              data-button="submit">ADD</button>
+            <button class="modal-button radius" type="button" data-button="back">BACK</button>
           </div>
           <div class="modal-detail radius">
             <div class="flex just-space">
@@ -69,15 +72,21 @@
           </div>
         </div>
         <div class="modal-right">
-          <div class="modal-detail radius">
-            <h2 class="color-lblue heebo">Synopsis</h2>
-            <p data-modal-detail="synopsis">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos esse quasi illo, id beatae, omnis magni nihil non
-              officiis rerum totam enim debitis ex laudantium hic mollitia, obcaecati corporis doloribus.
-            </p>
-          </div>
+          <input data-view="edit-review" name="thoughts" type="text" id="thoughts"
+            maxlength="50" placeholder="Thoughts">
+          <input data-view="edit-review" name="score" type="text" id="score"
+            maxlength="4" placeholder="Score">
         </div>
-      </div>
+        <div class="modal-detail radius" data-view="review edit-series">
+          <h2 class="color-lblue heebo">Synopsis</h2>
+          <p data-modal-detail="synopsis">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos esse quasi illo, id beatae, omnis magni nihil non
+            officiis rerum totam enim debitis ex laudantium hic mollitia, obcaecati corporis doloribus.
+          </p>
+        </div>
+        <textarea data-view="edit-review" name="review" id="review"
+          cols="30" rows="10" placeholder="Review"></textarea>
+      </form>
     </div>
   </main>
   <script src="js/data.js"></script>
