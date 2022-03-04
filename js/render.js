@@ -1,5 +1,5 @@
 /* exported populateEntryList */
-/* global elementEntryItem, elementImage, elementInfo, elementTitle, elementAddButton, elementEpisodeButtons, elementThoughts, elementReview, elementScoreCard, elementRightSide, elementDetailButton */
+/* global elementEntryItem, elementImage, elementInfo, elementTitle, elementEpisodeButtons, elementThoughts, elementReview, elementScoreCard, elementRightSide */
 /* global data, elEntryList, clearEntryList */
 
 function populateEntryList(viewString) {
@@ -56,7 +56,6 @@ function renderSearch(dataObject) {
   elInfo.appendChild(elementTitle(dataObject));
   elEntryItem.appendChild(elementImage(dataObject));
   elEntryItem.appendChild(elInfo);
-  elEntryItem.appendChild(elementAddButton());
   return elEntryItem;
 }
 
@@ -78,7 +77,6 @@ function renderReviewList(dataObject) {
   elInfo.appendChild(elementThoughts(dataObject));
   elInfo.appendChild(elementReview(dataObject));
   elRightSide.appendChild(elementScoreCard(dataObject));
-  elRightSide.appendChild(elementDetailButton());
   elEntryItem.appendChild(elementImage(dataObject));
   elEntryItem.appendChild(elInfo);
   elEntryItem.appendChild(elRightSide);

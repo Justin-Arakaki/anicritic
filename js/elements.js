@@ -37,9 +37,9 @@ function elementAddButton() {
   const elButtonWrapper = document.createElement('div');
   elButtonWrapper.className = 'flex just-right align-center';
   const elButton = document.createElement('button');
-  elButton.className = 'plus-button radius';
+  elButton.className = 'plus-button background-transparent radius';
   const elIcon = document.createElement('i');
-  elIcon.className = 'fas fa-list fa-2x';
+  elIcon.className = 'fas fa-list fa-2x color-lblue';
   elButtonWrapper.appendChild(elButton);
   elButton.appendChild(elIcon);
   return elButtonWrapper;
@@ -71,13 +71,13 @@ function elementEpisodeButtons(dataObject, buttonTypeNum) {
   const elButtonText = document.createElement('h3');
   elButtonText.className = 'episode-counter';
   const elUpButton = document.createElement('button');
-  elUpButton.className = 'list-arrow-button radius';
+  elUpButton.className = 'list-arrow-button background-transparent';
   const elDownButton = document.createElement('button');
-  elDownButton.className = 'list-arrow-button radius';
+  elDownButton.className = 'list-arrow-button background-transparent';
   const elUpIcon = document.createElement('i');
-  elUpIcon.className = 'fas fa-chevron-up fa-2x color-dgray';
+  elUpIcon.className = 'fas fa-chevron-up fa-2x color-lblue';
   const elDownIcon = document.createElement('i');
-  elDownIcon.className = 'fas fa-chevron-down fa-2x color-dgray';
+  elDownIcon.className = 'fas fa-chevron-down fa-2x color-lblue';
   // If movie prevent adding buttons
   elContainer.appendChild(elWrapper);
   if (buttonTypeNum === 0) { // Episode Tracker Type
@@ -116,7 +116,7 @@ function elementThoughts(dataObject) {
   if (dataObject.thoughts === undefined) {
     thoughts = 'No thoughts yet!';
   } else {
-    thoughts = dataObject.thoughts;
+    thoughts = 'Thoughts: ' + dataObject.thoughts;
   }
   elThoughts.classList.add('overflow');
   elThoughts.textContent = thoughts;
@@ -152,18 +152,18 @@ function elementScoreCard(dataObject) {
 
 function elementEditButton() {
   const elButton = document.createElement('button');
-  elButton.classList.add('entry-edit-button', 'radius');
+  elButton.classList.add('entry-edit-button', 'background-transparent');
   const elIcon = document.createElement('i');
-  elIcon.className = 'far fa-edit fa-2x';
+  elIcon.className = 'far fa-edit fa-2x color-lblue';
   elButton.appendChild(elIcon);
   return elButton;
 }
 
 function elementDetailButton() {
   const elButton = document.createElement('button');
-  elButton.classList.add('entry-detail-button', 'radius');
+  elButton.classList.add('entry-detail-button', 'background-transparent');
   const elIcon = document.createElement('i');
-  elIcon.className = 'far fa-newspaper fa-2x';
+  elIcon.className = 'fas fa-book fa-2x color-lblue';
   elButton.appendChild(elIcon);
   return elButton;
 }

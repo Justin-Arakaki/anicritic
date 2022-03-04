@@ -19,6 +19,10 @@
   background-color: #1a1c1e;
 }
 
+.entry-item:hover {
+  cursor: pointer;
+}
+
 .entry-info {
   width: 0; /* DO NOT REMOVE */
   flex-grow: 1;
@@ -75,7 +79,6 @@
   width: 2.5rem;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0);
 }
 
 .add-button {
