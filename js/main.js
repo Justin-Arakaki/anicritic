@@ -275,13 +275,21 @@ function populateDetail(dataObject) {
   elMyRating.textContent = data.loadedEntry.personal_score;
   elMAL.setAttribute('href', data.loadedEntry.url);
   elTrailer.setAttribute('href', data.loadedEntry.trailer.url);
-  elDemographic.textContent = data.loadedEntry.demographics[0].name;
+  if (data.loadedEntry.demographics.length === 0) {
+    elDemographic.textContent = 'Unknown';
+  } else {
+    elDemographic.textContent = data.loadedEntry.demographics[0].name;
+  }
   let genreList = '';
   for (let i = 0; i < Math.min(data.loadedEntry.genres.length, 2); i++) {
     genreList += data.loadedEntry.genres[i].name + ' ';
   }
   elGenres.textContent = genreList;
-  elStudio.textContent = data.loadedEntry.studios[0].name;
+  if (data.loadedEntry.studios.length === 0) {
+    elStudio.textContent = 'Unknown';
+  } else {
+    elStudio.textContent = data.loadedEntry.studios[0].name;
+  }
   elTitle.textContent = data.loadedEntry.title;
   elPreviewPic.setAttribute('src', data.loadedEntry.images.jpg.image_url);
   elScore.textContent = data.loadedEntry.score;
