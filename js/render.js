@@ -1,4 +1,4 @@
-/* exported populateEntryList */
+/* exported populateEntryList, populateDetail */
 /* global elementEntryItem, elementImage, elementInfo, elementTitle, elementEpisodeButtons, elementThoughts, elementReview, elementScoreCard, elementRightSide */
 /* global data, elEntryList, clearEntryList */
 
@@ -8,6 +8,10 @@ function populateEntryList(viewString) {
   clearEntryList();
   switch (viewString) {
     case 'search':
+      entries = data.searchResults;
+      renderer = renderSearch;
+      break;
+    case 'search-list':
       entries = data.searchResults;
       renderer = renderSearch;
       break;
@@ -81,4 +85,50 @@ function renderReviewList(dataObject) {
   elEntryItem.appendChild(elInfo);
   elEntryItem.appendChild(elRightSide);
   return elEntryItem;
+}
+
+function populateDetail(dataObject) {
+  data.loadedEntry = dataObject;
+  const elTitle = document.querySelector('[data-modal-detail="title"]');
+  const elPreviewPic = document.querySelector('.modal-preview > img');
+  const elScore = document.querySelector('[data-modal-detail="score"]');
+  const elSynopsis = document.querySelector('[data-modal-detail="synopsis"]');
+  const elEpisodes = document.querySelector('[data-modal-detail="episodes"]');
+  const elStudio = document.querySelector('[data-modal-detail="studio"]');
+  const elGenres = document.querySelector('[data-modal-detail="genres"]');
+  const elDemographic = document.querySelector('[data-modal-detail="demographic"]');
+  const elTrailer = document.querySelector('[data-modal-detail="trailer"]');
+  const elMAL = document.querySelector('[data-modal-detail="MAL"]');
+  const elMyRating = document.querySelector('[data-modal-detail="my-rating"]');
+  const elThoughts = document.querySelector('[data-modal-detail="my-thoughts"]');
+  const elReview = document.querySelector('[data-modal-detail="my-review"]');
+  elReview.textContent = data.loadedEntry.review;
+  elThoughts.textContent = data.loadedEntry.thoughts;
+  elMyRating.textContent = data.loadedEntry.personal_score;
+  elMAL.setAttribute('href', data.loadedEntry.url);
+  elTrailer.setAttribute('href', data.loadedEntry.trailer.url);
+  if (data.loadedEntry.demographics.length === 0) {
+    elDemographic.textContent = 'Unknown';
+  } else {
+    elDemographic.textContent = data.loadedEntry.demographics[0].name;
+  }
+  let genreList = '';
+  for (let i = 0; i < Math.min(data.loadedEntry.genres.length, 2); i++) {
+    genreList += data.loadedEntry.genres[i].name + ' ';
+  }
+  elGenres.textContent = genreList;
+  if (data.loadedEntry.studios.length === 0) {
+    elStudio.textContent = 'Unknown';
+  } else {
+    elStudio.textContent = data.loadedEntry.studios[0].name;
+  }
+  elTitle.textContent = data.loadedEntry.title;
+  elPreviewPic.setAttribute('src', data.loadedEntry.images.jpg.image_url);
+  elScore.textContent = data.loadedEntry.score;
+  if (data.loadedEntry.episodes === null || data.loadedEntry.episodes === 1) {
+    elEpisodes.textContent = 'Movie';
+  } else {
+    elEpisodes.textContent = data.loadedEntry.episodes;
+  }
+  elSynopsis.textContent = data.loadedEntry.synopsis;
 }

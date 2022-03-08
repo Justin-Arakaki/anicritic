@@ -1,0 +1,75 @@
+.add-button {
+  padding: 0.5rem 5rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.modal-button-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.modal-button {
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  flex-grow: 1;
+}
+
+.modal-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.modal-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.modal-detail {
+  background-color: #1a1c1e;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.modal-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.back-button {
+  position: fixed;
+  padding: 0.5rem;
+  top: 1rem;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+@media screen and (min-width: 500px) {
+  .modal-left {
+    width: 40%;
+    margin: 0;
+  }
+
+  .modal-right {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+
+  .modal-preview {
+    width: 100%;
+  }
+
+  .back-button {
+    top: 0.25rem;
+    left: 1.5rem;
+  }
+}

@@ -1,4 +1,5 @@
 /* exported elementEntryItem, elementImage, elementInfo, elementTitle, elementVibes, elementAddButton, elementEpisodeButtons, elementThoughts, elementReview, elementScoreCard, elementEditButton, elementRightSide, elementDetailButton */
+/* global */
 
 function elementEntryItem() {
   const elEntry = document.createElement('li');
@@ -43,24 +44,6 @@ function elementAddButton() {
   elButtonWrapper.appendChild(elButton);
   elButton.appendChild(elIcon);
   return elButtonWrapper;
-}
-
-function elementVibes(dataObject) {
-  const vibes = dataObject.vibes;
-  let vibeList = '';
-  for (let i = 0; i < vibes.length; i++) {
-    vibeList += vibes[i] + ' ';
-  }
-  const elVibeBox = document.createElement('div');
-  elVibeBox.className = 'flex gap';
-  const elHeading = document.createElement('h3');
-  elHeading.className = 'color-lblue proza';
-  elHeading.innerHTML = '<i>Vibes</i>';
-  const elVibeList = document.createElement('h3');
-  elVibeList.textContent = vibeList;
-  elVibeBox.appendChild(elHeading);
-  elVibeBox.appendChild(elVibeList);
-  return elVibeBox;
 }
 
 function elementEpisodeButtons(dataObject, buttonTypeNum) {
@@ -113,10 +96,10 @@ function elementEpisodeButtons(dataObject, buttonTypeNum) {
 function elementThoughts(dataObject) {
   let thoughts;
   const elThoughts = document.createElement('h3');
-  if (dataObject.thoughts === undefined) {
-    thoughts = 'No thoughts yet!';
-  } else {
+  if (dataObject.thoughts !== undefined && dataObject.thoughts !== '') {
     thoughts = 'Thoughts: ' + dataObject.thoughts;
+  } else {
+    thoughts = 'No thoughts yet!';
   }
   elThoughts.classList.add('overflow');
   elThoughts.textContent = thoughts;
@@ -126,12 +109,12 @@ function elementThoughts(dataObject) {
 function elementReview(dataObject) {
   let review;
   const elReview = document.createElement('p');
-  if (dataObject.review === undefined) {
-    review = 'No review yet!';
+  if (dataObject.review !== undefined && dataObject.review !== '') {
+    review = 'Review: ' + dataObject.review;
   } else {
-    review = dataObject.review;
+    review = 'No review yet!';
   }
-  elReview.textContent = 'Review: ' + review;
+  elReview.textContent = review;
   elReview.classList.add('overflow');
   return elReview;
 }
@@ -144,7 +127,11 @@ function elementScoreCard(dataObject) {
   elHeading.textContent = 'SCORE';
   const elScore = document.createElement('h3');
   elScore.classList.add('color-lblue', 'entry-score', 'proza');
-  elScore.textContent = dataObject.personal_score;
+  if (dataObject.personal_score !== undefined && dataObject.personal_score !== '') {
+    elScore.textContent = dataObject.personal_score;
+  } else {
+    elScore.textContent = '-';
+  }
   elContainer.appendChild(elHeading);
   elContainer.appendChild(elScore);
   return elContainer;

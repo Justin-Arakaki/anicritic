@@ -14,53 +14,44 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/utility.css">
+  <link rel="stylesheet" href="css/fab.css">
+  <link rel="stylesheet" href="css/modal.css">
 </head>
 <body>
   <header>
     <div class="container padding">
       <div class="detail-header hidden"
-        data-view="review edit-review edit-series view-series search">
+        data-view="review edit-review edit-series view-series">
         <h1 class="color-lblue"></h1>
       </div>
       <div class="nav-header hidden"
-        data-view="review-list watch-list queue-list recommend sommelier">
+      data-view="review-list watch-list queue-list search-list recommend sommelier">
         <a data-nav="review-list" href="#">Reviews</a>
         <a data-nav="watch-list" href="#">Watching</a>
         <a data-nav="queue-list" href="#">Queue</a>
-        <a data-nav="recommend" href="#">Recommend</a>
+        <a data-nav="search-list" href="#">Search</a>
       </div>
     </div>
   </header>
   <main>
-    <div class="container hidden" data-view="search">
+    <div class="container hidden"
+    data-view="search-list">
       <div class="flex just-center margin-top">
         <input class="col-80" type="text" name="search" id="search" placeholder="Search">
       </div>
       <h2 class="search-notification hidden">Searching...</h2>
     </div>
-    <div class="container hidden" data-view="search review-list watch-list queue-list sommelier">
-      <div class="flex just-center margin-top" data-view="review-list watch-list queue-list">
-        <button class="add-button color-dgray radius">ADD</button>
-      </div>
+    <div class="container hidden"
+    data-view="search-list review-list watch-list queue-list sommelier">
       <ul class="margin-top"></ul>
     </div>
-    <div class="container padding hidden" data-view="review edit-review edit-series view-series">
+    <div class="container padding hidden"
+    data-view="review edit-review edit-series view-series">
       <h2 class="margin-top text-align-center color-lblue" data-modal-detail="title">Title</h2>
       <form id="review-form" class="flex flex-wrap gap margin-top">
         <div class="modal-left">
-          <div class="modal-preview margin-bottom">
+          <div class="modal-preview">
             <img class="radius" src="images/placeholder-image.png" alt="Image not found">
-          </div>
-          <div class="modal-button-wrapper">
-            <button class="modal-button radius" type="button" data-view="review"
-              data-button="edit-review">EDIT</button>
-            <button class="modal-button radius" type="button" data-view="review"
-              data-button="details">DETAILS</button>
-            <button class="modal-button radius" type="button" data-view="edit-series"
-              data-button="add">ADD</button>
-            <button class="modal-button radius" data-view="edit-review"
-              data-button="submit">SAVE</button>
-            <button class="modal-button radius" type="button" data-button="back">BACK</button>
           </div>
           <div class="modal-detail radius">
             <div class="flex just-space">
@@ -107,13 +98,17 @@
           <div class="modal-detail radius" data-view="edit-series view-series">
             <div class="flex just-space">
               <h2 class="color-lblue heebo">Trailer</h2>
-              <a data-modal-detail="trailer" class="heebo" target="_blank" href="">Youtube Link</a>
+              <a data-modal-detail="trailer" class="heebo" target="_blank" href="">
+                Youtube <i class="fas fa-external-link-alt"></i>
+              </a>
             </div>
           </div>
           <div class="modal-detail radius" data-view="edit-series view-series">
             <div class="flex just-space">
               <h2 class="color-lblue heebo">MAL</h2>
-              <a data-modal-detail="MAL" class="heebo" target="_blank" href="">MAL Link</a>
+              <a data-modal-detail="MAL" class="heebo" target="_blank" href="">
+                MAL <i class="fas fa-external-link-alt"></i>
+              </a>
             </div>
           </div>
           <input data-view="edit-review" name="thoughts" type="text" id="thoughts"
@@ -131,13 +126,34 @@
         </div>
         <textarea data-view="edit-review" name="review" id="review"
           cols="30" rows="10" placeholder="Review"></textarea>
+        <button class="modal-button radius" id="submit-review" data-view="edit-review">SAVE</button>
       </form>
+      <button class="fab-button" id="fab-button" data-view="view-series edit-series review">
+        <i class="fas fa-bars fa-2x"></i>
+        <i class="hidden fas fa-times fa-2x"></i>
+      </button>
+      <div class="fab-menu" id="fab-menu">
+        <button class="fab-option hidden" id="fab-add-queue">Add to Queue</button>
+        <button class="fab-option hidden" id="fab-add-watch">Add to Watch List</button>
+        <button class="fab-option hidden" id="fab-add-review">Add to Review List</button>
+        <button class="fab-option hidden" id="fab-move-review">Move to Review List</button>
+        <button class="fab-option hidden" id="fab-move-watch">Move to Watch List</button>
+        <button class="fab-option hidden" id="fab-move-queue">Move to Queue</button>
+        <button class="fab-option hidden" id="fab-edit">Edit</button>
+        <button class="fab-option fab-delete hidden" id="fab-delete">DELETE</button>
+      </div>
+      <button class="back-button" id="back-button">
+        <i class="fas fa-chevron-left fa-2x color-lblue"></i>
+      </button>
     </div>
+    <button class="dev-button">RESET</button>
   </main>
   <script src="js/data.js"></script>
   <script src="js/elements.js"></script>
   <script src="js/render.js"></script>
+  <script src="js/modal.js"></script>
   <script src="js/search.js"></script>
+  <script src="js/review.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
