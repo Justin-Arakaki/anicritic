@@ -1,14 +1,17 @@
 /* exported data, clearData */
 
 let data = {
-  view: 'review-list',
+  view: 'search-list',
+  viewHistory: [],
   loadedEntry: null,
-  editing: null,
+  editing: {
+    list: null,
+    node: null
+  },
   searchResults: [],
   reviewList: [],
   watchList: [],
-  queueList: [],
-  recommendResults: []
+  queueList: []
 };
 const $previousData = localStorage.getItem('data-local-storage');
 if ($previousData !== null) {
@@ -21,14 +24,17 @@ window.addEventListener('beforeunload', function () {
 
 function clearData() { // resets EVERYTHING (console use only)
   data = {
-    view: 'review-list',
+    view: 'search-list',
+    viewHistory: [],
     loadedEntry: null,
-    editing: null,
+    editing: {
+      list: null,
+      node: null
+    },
     searchResults: [],
     reviewList: [],
     watchList: [],
-    queueList: [],
-    recommendResults: []
+    queueList: []
   };
   const dataJSON = JSON.stringify(data);
   localStorage.setItem('data-local-storage', dataJSON);
