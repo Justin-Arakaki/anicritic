@@ -68,6 +68,9 @@ function handleClickFabMenu(e) {
       switchView('edit-review');
       break;
     case 'fab-delete':
+      removeEntry(editedList, data.editing.node);
+      switchView(data.editing.list);
+      clearEditing();
       break;
   }
 }
