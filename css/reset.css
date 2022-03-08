@@ -27,6 +27,14 @@ a {
   font-size: 1.1rem;
 }
 
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: white;
+}
+
 h3 {
   font-size: 1rem;
 }
