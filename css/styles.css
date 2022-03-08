@@ -16,6 +16,10 @@
   justify-content: space-between;
 }
 
+a.nav-highlight {
+  color: #24a5f9;
+}
+
 .entry-item {
   display: flex;
   gap: 0.5rem;

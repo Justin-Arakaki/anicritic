@@ -133,9 +133,9 @@ function switchView(viewString) { // Changes UI to view
 function switchNavHighlight(navNodeNum) { // Switches nav header blue highlight
   const elNavChildren = elNavHeader.children;
   for (const x of elNavChildren) {
-    x.classList.remove('color-lblue');
+    x.classList.remove('nav-highlight');
   }
-  elNavChildren[navNodeNum].classList.add('color-lblue');
+  elNavChildren[navNodeNum].classList.add('nav-highlight');
 }
 
 function htmlViewChange(viewString) { // Hides or shows all data-view
