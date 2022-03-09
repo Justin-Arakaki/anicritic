@@ -213,14 +213,11 @@ function clearEditing() {
 function updateViewHistory(viewString) {
   if (viewString.includes('list')) {
     clearViewHistory();
-  }
-  if (data.viewHistory.length === 0) {
     data.viewHistory.push({ view: viewString, editing: { view: null, node: null } });
-  } else {
-    const lastView = data.viewHistory[data.viewHistory.length - 1];
-    if (lastView.view !== data.view && lastView.view !== viewString) {
-      data.viewHistory.push({ view: data.view, editing: JSON.parse(JSON.stringify(data.editing)) });
-    }
+  }
+  const lastView = data.viewHistory[data.viewHistory.length - 1];
+  if (lastView.view !== data.view && lastView.view !== viewString) {
+    data.viewHistory.push({ view: data.view, editing: JSON.parse(JSON.stringify(data.editing)) });
   }
 }
 
