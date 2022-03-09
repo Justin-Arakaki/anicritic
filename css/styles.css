@@ -11,6 +11,10 @@
   justify-content: center;
 }
 
+.tail-padding {
+  padding-bottom: 4.5rem;
+}
+
 .nav-header {
   display: flex;
   justify-content: space-between;
@@ -33,6 +37,11 @@ a.nav-highlight {
 
 .entry-item:hover {
   cursor: pointer;
+}
+
+.entry-item-pic {
+  width: calc(100% / 6);
+  min-width: 59px;
 }
 
 .entry-info {
