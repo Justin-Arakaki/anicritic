@@ -13,7 +13,9 @@ function handleClickBackButton() { // TODO
   if (lastView !== data.view && lastView !== undefined) {
     data.editing = lastView.editing;
     switchView(lastView.view);
-    data.viewHistory.pop();
+    if (data.viewHistory.length > 1) {
+      data.viewHistory.pop();
+    }
   } else {
     switchView('search-list');
   }
