@@ -11,7 +11,7 @@ function elementImage(dataObject) {
   const img = dataObject.images.jpg.image_url;
   const title = dataObject.title;
   const elImgWrapper = document.createElement('div');
-  elImgWrapper.className = 'flex col-sixth align-center';
+  elImgWrapper.className = 'flex entry-item-pic align-center';
   const elImgPreview = document.createElement('img');
   elImgPreview.className = 'radius';
   elImgPreview.setAttribute('src', img);
