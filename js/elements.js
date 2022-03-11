@@ -127,7 +127,7 @@ function elementScoreCard(dataObject) {
   elHeading.textContent = 'SCORE';
   const elScore = document.createElement('h3');
   elScore.classList.add('color-lblue', 'entry-score', 'proza');
-  if (dataObject.personal_score !== undefined && dataObject.personal_score !== '') {
+  if (dataObject.personal_score || dataObject.personal_score === 0) {
     elScore.textContent = dataObject.personal_score;
   } else {
     elScore.textContent = '-';

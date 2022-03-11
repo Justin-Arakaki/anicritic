@@ -3,6 +3,7 @@
 /* global data, elEntryList, clearEntryList */
 
 function populateEntryList(viewString) {
+  const elEmpty = document.querySelector('.empty-message');
   let entries = null;
   let renderer = null;
   clearEntryList();
@@ -34,6 +35,11 @@ function populateEntryList(viewString) {
   }
   if (renderer === null) { // REMOVE WHEN COMPLETED
     return;
+  }
+  if (entries.length === 0) {
+    elEmpty.classList.remove('hidden');
+  } else {
+    elEmpty.classList.add('hidden');
   }
   for (let i = 0; i < entries.length; i++) {
     const elEntry = renderer(entries[i]);

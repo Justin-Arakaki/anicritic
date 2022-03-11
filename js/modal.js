@@ -73,7 +73,6 @@ function handleClickFabMenu(e) {
       removeEntry(editedList, data.editing.node);
       switchView(data.editing.list);
       clearEditing();
-      break;
   }
 }
 
@@ -110,4 +109,5 @@ function populateFab() {
       elMenuItems['fab-add-watch'].classList.remove('hidden');
       elMenuItems['fab-add-queue'].classList.remove('hidden');
   }
+  // fabAnimation();
 }

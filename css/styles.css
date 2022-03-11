@@ -24,6 +24,12 @@ a.nav-highlight {
   color: #24a5f9;
 }
 
+.empty-message {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
 .entry-item {
   display: flex;
   gap: 0.5rem;
