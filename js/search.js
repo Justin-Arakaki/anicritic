@@ -8,7 +8,7 @@ const searchTimer = {
   timerID: null,
   startTimer: function () {
     clearTimeout(this.timerID);
-    this.timerID = setTimeout(searchAnime, 1000);
+    this.timerID = setTimeout(searchAnime, 300);
   }
 };
 

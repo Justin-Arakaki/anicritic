@@ -89,6 +89,9 @@ function switchView(viewString) { // Changes UI to view
   populateEntryList(viewString);
   updateViewHistory(viewString);
   htmlViewChange(viewString);
+  if (viewString !== 'search-list') {
+    scrollTop();
+  }
   switch (viewString) { // Change headings based on view
     case 'edit-review':
       elDetailHeader.textContent = 'Edit Review';
@@ -223,4 +226,8 @@ function updateViewHistory(viewString) {
 
 function clearViewHistory() {
   data.viewHistory = [];
+}
+
+function scrollTop() {
+  document.querySelector('main').scrollTop = 0;
 }

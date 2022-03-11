@@ -79,6 +79,10 @@ textarea:focus {
 }
 
 @media screen and (min-width: 500px) {
+  main {
+    padding: 0;
+  }
+
   ::-webkit-scrollbar {
     width: 16px;
   }
