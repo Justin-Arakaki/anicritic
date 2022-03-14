@@ -10,8 +10,6 @@
   padding: 0.25rem;
   border-radius: 50%;
   background-color: rgba(36, 165, 249);
-  animation-name: slide-bottom;
-  animation-duration: 0.5s;
 }
 
 .fab-menu {
@@ -63,18 +61,6 @@
   padding: 0 1.2rem;
   justify-content: center;
   align-items: center;
-}
-
-@keyframes slide-bottom {
-  from {
-    transform: translateY(4rem);
-    background-color: rgba(0, 0, 0, 0);
-    color: rgba(0, 0, 0, 0);
-  }
-
-  to {
-    transform: translateY(0);
-  }
 }
 
 @media screen and (min-width: 500px) {
