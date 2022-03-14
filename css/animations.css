@@ -1,0 +1,59 @@
+.ani-grow-in {
+  animation: grow-in 0.1s;
+}
+
+.ani-slide-bottom {
+  animation: slide-bottom 0.1s;
+}
+
+@keyframes grow-in {
+  from {
+    transform: scale(90%);
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0);
+  }
+
+  to {
+    transform: scale(100%);
+  }
+}
+
+.ani-spin-right {
+  animation: spin-right 0.1s;
+}
+
+@keyframes spin-right {
+  from {
+    transform: rotate(-90deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.ani-spin-left {
+  animation: spin-left 0.1s;
+}
+
+@keyframes spin-left {
+  from {
+    transform: rotate(90deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes slide-bottom {
+  from {
+    transform: translateY(3rem);
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
