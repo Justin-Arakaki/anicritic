@@ -24,7 +24,7 @@ function searchAnime() {
     } else {
       elSearchNotification.classList.add('hidden');
       dataUpdateSearchResults(xhr.response.data);
-      populateEntryList('search');
+      populateEntryList('search-list');
     }
   });
   xhr.send();

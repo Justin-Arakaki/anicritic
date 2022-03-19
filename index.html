@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="css/utility.css">
   <link rel="stylesheet" href="css/fab.css">
   <link rel="stylesheet" href="css/modal.css">
-  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/fab-animations.css">
 </head>
 <body>
   <header>
@@ -26,7 +26,7 @@
         <h1 class="color-lblue"></h1>
       </div>
       <div class="nav-header hidden"
-      data-view="review-list watch-list queue-list search-list recommend sommelier">
+      data-view="review-list watch-list queue-list search-list recommend">
         <a data-nav="review-list" href="#">Reviews</a>
         <a data-nav="watch-list" href="#">Watching</a>
         <a data-nav="queue-list" href="#">Queue</a>
@@ -36,17 +36,17 @@
   </header>
   <main>
     <div class="container hidden"
-    data-view="search-list">
+      data-view="search-list">
       <div class="flex just-center margin-top">
         <input class="col-80" type="text" name="search" id="search" placeholder="Search">
       </div>
       <h2 class="search-notification hidden">Searching...</h2>
     </div>
+    <div class="container empty-message hidden" data-view="review-list watch-list queue-list">
+      <h2>Nothing yet!</h2>
+    </div>
     <div class="container tail-padding hidden"
-    data-view="search-list review-list watch-list queue-list sommelier">
-      <div class="empty-message hidden">
-        <h2>Nothing yet!</h2>
-      </div>
+      data-view="search-list review-list watch-list queue-list">
       <ul class="margin-top"></ul>
     </div>
     <div class="container padding hidden tail-padding"
@@ -134,19 +134,28 @@
           cols="30" rows="10" placeholder="Review"></textarea>
         <button class="modal-button radius" id="submit-review" data-view="edit-review">SAVE</button>
       </form>
-      <button class="fab-button ani-slide-bottom" id="fab-button" data-view="view-series edit-series review">
-        <i class="fas fa-bars fa-2x ani-spin-left"></i>
-        <i class="hidden fas fa-times fa-2x ani-spin-right"></i>
+      <button class="fab-button ani-slide-bottom" id="fab-button"
+        data-view="view-series edit-series review">
+        <i class="fas fa-bars fa-2x"></i>
+        <i class="fas fa-times fa-2x hidden ani-spin-cw"></i>
       </button>
-      <div class="fab-menu ani-grow-in" id="fab-menu">
-        <button class="fab-option hidden" id="fab-add-queue">Add to Queue</button>
-        <button class="fab-option hidden" id="fab-add-watch">Add to Watch List</button>
-        <button class="fab-option hidden" id="fab-add-review">Add to Review List</button>
-        <button class="fab-option hidden" id="fab-move-review">Move to Review List</button>
-        <button class="fab-option hidden" id="fab-move-watch">Move to Watch List</button>
-        <button class="fab-option hidden" id="fab-move-queue">Move to Queue</button>
-        <button class="fab-option hidden" id="fab-edit">Edit</button>
-        <button class="fab-option fab-delete hidden" id="fab-delete">DELETE</button>
+      <div class="fab-menu ani-grow" id="fab-menu">
+        <button class="fab-option hidden" id="fab-add-queue">
+          Add to Queue</button>
+        <button class="fab-option hidden" id="fab-add-watch">
+          Add to Watch List</button>
+        <button class="fab-option hidden" id="fab-add-review">
+          Add to Review List</button>
+        <button class="fab-option hidden" id="fab-move-review">
+          Move to Review List</button>
+        <button class="fab-option hidden" id="fab-move-watch">
+          Move to Watch List</button>
+        <button class="fab-option hidden" id="fab-move-queue">
+          Move to Queue</button>
+        <button class="fab-option hidden" id="fab-edit">
+          Edit</button>
+        <button class="fab-option fab-delete hidden" id="fab-delete">
+          DELETE</button>
       </div>
       <button class="back-button" id="back-button">
         <i class="fas fa-chevron-left fa-2x color-lblue"></i>

@@ -1,0 +1,64 @@
+.ani-spin-cw {
+  animation: spin-cw 0.1s;
+}
+
+@keyframes spin-cw {
+  from { transform: rotate(-90deg); }
+  to { transform: rotate(0deg); }
+}
+
+.ani-spin-ccw {
+  animation: spin-ccw 0.1s;
+}
+
+@keyframes spin-ccw {
+  from { transform: rotate(90deg); }
+  to { transform: rotate(0deg); }
+}
+
+.ani-grow {
+  animation: grow 0.1s;
+}
+
+@keyframes grow {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.ani-shrink {
+  animation: shrink 0.1s forwards;
+}
+
+@keyframes shrink {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+}
+
+.ani-slide-bottom {
+  animation: slide-bottom 0.5s;
+}
+
+@keyframes slide-bottom {
+  from {
+    transform: translateY(8rem);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}

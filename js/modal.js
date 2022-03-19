@@ -22,11 +22,17 @@ function handleClickBackButton() { // TODO
 }
 
 function handleClickFabButton(e) {
-  const elFabMenu = document.querySelector('#fab-menu');
   const elFabIcon = elFabButton.children;
-  elFabMenu.classList.toggle('hidden');
-  elFabIcon[0].classList.toggle('hidden');
-  elFabIcon[1].classList.toggle('hidden');
+  const elBarsIcon = elFabIcon[0];
+  const elExIcon = elFabIcon[1];
+  elBarsIcon.classList.add('ani-spin-ccw');
+  elBarsIcon.classList.toggle('hidden');
+  elExIcon.classList.toggle('hidden');
+  if (elFabMenu.classList.contains('hidden')) {
+    elFabMenu.classList.remove('hidden');
+  } else {
+    aniHidden(elFabMenu, 'ani-shrink');
+  }
 }
 
 function handleClickFabMenu(e) {
@@ -79,9 +85,11 @@ function handleClickFabMenu(e) {
 function resetFab() {
   const elFabMenu = document.querySelector('#fab-menu');
   const elFabIcon = elFabButton.children;
+  const elBars = elFabIcon[0];
+  const elEx = elFabIcon[1];
   elFabMenu.classList.add('hidden');
-  elFabIcon[0].classList.remove('hidden');
-  elFabIcon[1].classList.add('hidden');
+  elBars.classList.remove('hidden', 'ani-spin-ccw');
+  elEx.classList.add('hidden');
   for (let i = 0; i < elFabMenu.children.length; i++) {
     elFabMenu.children[i].classList.add('hidden');
   }
@@ -110,4 +118,14 @@ function populateFab() {
       elMenuItems['fab-add-queue'].classList.remove('hidden');
   }
   // fabAnimation();
+}
+
+function aniHidden(element, classString) {
+  const handleAniEnd = function () {
+    element.removeEventListener('animationend', handleAniEnd);
+    element.classList.remove(classString);
+    element.classList.add('hidden');
+  };
+  element.classList.add(classString);
+  element.addEventListener('animationend', handleAniEnd);
 }
