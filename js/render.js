@@ -8,10 +8,6 @@ function populateEntryList(viewString) {
   let renderer = null;
   clearEntryList();
   switch (viewString) {
-    case 'search':
-      entries = data.searchResults;
-      renderer = renderSearch;
-      break;
     case 'search-list':
       entries = data.searchResults;
       renderer = renderSearch;
@@ -27,13 +23,8 @@ function populateEntryList(viewString) {
     case 'queue-list':
       entries = data.queueList;
       renderer = renderQueueList;
-      break;
-    case 'sommelier':
-      entries = data.recommendResults;
-      // renderer
-      break;
   }
-  if (renderer === null) { // REMOVE WHEN COMPLETED
+  if (renderer === null) {
     return;
   }
   if (entries.length === 0) {

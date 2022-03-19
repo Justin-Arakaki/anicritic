@@ -12,7 +12,13 @@ const elDevButton = document.querySelector('.dev-button');
 elDevButton.addEventListener('click', clearData);
 
 function handleLoad() { // Runs when content loaded
+  if (data.loadedEntry !== null) {
+    populateDetail(data.loadedEntry);
+  }
   switchView(data.view);
+  if (data.viewHistory.length > 1) {
+    data.viewHistory.pop();
+  }
 }
 
 function handleClickNav(e) {
@@ -52,7 +58,6 @@ function handleClickEntryList(e) { // this is listening to all buttons
         data.editing.list = data.view;
         populateDetail(entryData);
         switchView('review');
-        break;
     }
   }
   populateEntryList(data.view); // TODO this is inefficient
