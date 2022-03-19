@@ -27,10 +27,10 @@ function populateEntryList(viewString) {
   if (renderer === null) {
     return;
   }
-  if (entries.length === 0) {
-    elEmpty.classList.remove('hidden');
-  } else {
+  if (entries.length > 0 || viewString === 'search-list') {
     elEmpty.classList.add('hidden');
+  } else {
+    elEmpty.classList.remove('hidden');
   }
   for (let i = 0; i < entries.length; i++) {
     const elEntry = renderer(entries[i]);
