@@ -1,8 +1,8 @@
 {
-  "name": "ajax-project",
+  "name": "anicritic",
   "version": "1.0.0",
   "private": true,
-  "description": "A dynamic HTML, CSS, and JavaScript solo project.",
+  "description": "A web application for anime nerds who want to track, review, and search anime.",
   "main": "index.js",
   "scripts": {
     "prepare": "husky install"
