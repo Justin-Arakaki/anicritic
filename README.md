@@ -14,5 +14,5 @@ I created this for me and others like me who want to have all their stuff in one
 
 Getting Started:
 
-Clone repository
+Clone repository 
 `npm install`
