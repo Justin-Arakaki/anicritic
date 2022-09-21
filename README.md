@@ -3,6 +3,7 @@
 Link --> https://justin-arakaki.github.io/anicritic/
 
 A web application for anime nerds who want to track, review, and search anime.
+
 This project uses: Vanilla.js, JikanAPI, and AJAX
 
 JikanAPI Documentation --> https://docs.api.jikan.moe/
