@@ -19,7 +19,7 @@ Simply clone repository and use `npm install`
 I created this for me and others like me who want to have all their stuff in one place. My goal is to make a better anime management site. There are other sites like this one including MAL and Anilist but they each have strengths to draw from.
 
 # Features
-##### The user can...
+The user can...
 - Search the MAL catalog
 - Add search results to their watch list
 - Add search results to their queue list
