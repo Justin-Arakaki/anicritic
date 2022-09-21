@@ -16,5 +16,4 @@ I created this for me and others like me who want to have all their stuff in one
 
 # Getting Started
 
-Clone repository 
-`npm install`
+Simply clone repository and use `npm install`
