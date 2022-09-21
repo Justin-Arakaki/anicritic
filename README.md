@@ -1,4 +1,4 @@
-# Anicritic WIP
+# anicritic
 
 Link --> https://justin-arakaki.github.io/anicritic/
 
